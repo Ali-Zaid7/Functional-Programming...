@@ -1,4 +1,5 @@
 Functional Programming in TypeScript
+
 This repository demonstrates the principles of functional programming in TypeScript, focusing on concepts like immutable data,
  pure functions, higher-order functions, closures, recursion, and function composition. The examples provided showcase how to
  write clean, predictable, and reusable code using functional programming techniques.
@@ -27,9 +28,9 @@ Object.freeze() to prevent modifications to objects.
 
 Example:
 typescript
- 
+ ```
 const PI: readonly number = 3.14; // Immutable value
-
+```
 Pure Functions
 Pure functions are functions that:
 Always return the same output for the same input.
@@ -37,11 +38,11 @@ Have no side effects (e.g., no mutations or external state changes).
 
 Example:
 typescript
- 
+ ```
 function add(a: number, b: number): number {
   return a + b; // Pure function
 }
-
+```
 
 Higher-Order Functions
 Higher-order functions (HOFs) are functions that:
@@ -50,20 +51,20 @@ Return a function as their result.
 
 Example:
 typescript
- 
+ ```
 function logger(callback: (message: string) => void): void {
   callback("Hello, World!");
 }
 
 logger(console.log); // Output: Hello, World!
-
+```
 Function Composition
 Function composition is the process of combining two or more functions to create a new function. The output of
  one function becomes the input of the next.
 
 Example:
 typescript
- 
+ ```
 const compose = (f: (x: number) => number, g: (x: number) => number) => (x: number) => f(g(x));
 
 const double = (x: number) => x * 2;
@@ -71,7 +72,7 @@ const addOne = (x: number) => x + 1;
 
 const doubleThenAddOne = compose(double, addOne);
 console.log(doubleThenAddOne(5)); // Output: 11
-
+```
 
 Closures
 A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope.
@@ -79,7 +80,7 @@ A closure is a function that retains access to its lexical scope, even when the 
 
 Example:
 typescript
- 
+ ```
 function createCounter() {
   let count = 0;
   return function increment() {
@@ -91,7 +92,7 @@ function createCounter() {
 const counter = createCounter();
 console.log(counter()); // Output: 1
 console.log(counter()); // Output: 2
-
+```
 
 Recursion
 Recursion is a technique where a function calls itself to solve a problem. It is often used for tasks like traversing trees or
@@ -99,52 +100,54 @@ calculating factorials.
 
 Example:
 typescript
- 
+ ```
 function factorial(n: number): number {
   if (n === 0) return 1; // Base case
   return n * factorial(n - 1); // Recursive call
 }
 
 console.log(factorial(5)); // Output: 120
-
+```
 Examples
 Map, Filter, Reduce
 These are common higher-order functions used for transforming, filtering, and aggregating data.
 
 Map
 typescript
- 
+ ```
 const numbers = [1, 2, 3, 4, 5];
 const doubled = numbers.map((x) => x * 2);
 console.log(doubled); // Output: [2, 4, 6, 8, 10]
-
+```
 
 Filter
 typescript
- 
+ ```
 const evenNumbers = numbers.filter((x) => x % 2 === 0);
 console.log(evenNumbers); // Output: [2, 4]
+```
+
 Reduce
 typescript
- 
+ ```
 const sum = numbers.reduce((acc, x) => acc + x, 0);
 console.log(sum); // Output: 15
+```
 Currying
 Currying transforms a function with multiple arguments into a sequence of functions, each taking a single argument.
 
 Example:
-
 typescript
-
+```
 const add = (a: number) => (b: number) => a + b;
 const addFive = add(5);
 console.log(addFive(10)); // Output: 15
 Point-Free Programming
 Point-free programming emphasizes composing functions without explicitly mentioning their arguments.
-
+```
 Example:
 typescript
- 
+ ```
 const pipe = (...fns: ((x: number) => number)[]) => (x: number) => fns.reduce((acc, fn) => fn(acc), x);
 
 const double = (x: number) => x * 2;
@@ -152,7 +155,7 @@ const addOne = (x: number) => x + 1;
 
 const doubleThenAddOne = pipe(double, addOne);
 console.log(doubleThenAddOne(5)); // Output: 11
-
+```
 Summary 
 What I used and Why I use?
 
